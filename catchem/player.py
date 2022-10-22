@@ -1,17 +1,30 @@
-class player
-def __init__(self, (limit_l, limit_r)):
-    self limit_l = limit_l
-    self limit_r = limit_r
-    self.position = random.randint(limit_l, limit_r)
+import random
 
-def move_right(): 
-    if self.position < self.limitr:
-        self.position = self.position + 2
+class Player:
 
-def move_left(self):
-    if self.position > self.limitl:
-        self.position = self.position - 2
+    def __init__(self, limit_l, limit_r, sense):
+        self.sense = sense
+        self.limit_l = limit_l
+        self.limit_r = limit_r
+        self.position = random.randint(limit_l, limit_r)
 
-get_position():
-    return position
-   # self.position = self.position - 1 
+    def move_right(self): 
+        if self.position < self.limit_r:
+            self.position = self.position + 1
+            self.display(1)
+
+    def move_left(self):
+        if self.position > self.limit_l:
+            self.position = self.position - 1
+            self.display(-1)
+
+    #def display(self):
+        #y = 7
+        #x = self.position%8
+
+    def display(self, move):
+        y = 7
+        x = self.position%8
+        self.sense.set_pixel(x-move,y,(0,0,0))
+        self.sense.set_pixel(x,y,(255, 255, 255))   
+        #self.position = self.position - 1 
